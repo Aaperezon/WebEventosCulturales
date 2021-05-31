@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Invitado</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css">
     <script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
 </head>
