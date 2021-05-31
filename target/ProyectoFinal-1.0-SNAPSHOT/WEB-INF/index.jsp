@@ -15,32 +15,29 @@
             <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
             TecTicket
         </a>
-        <button type="button"  id="nuevo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Ingresar
-        </button>
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
             <span class="iconify" data-icon="carbon:user-avatar-filled-alt" data-inline="false"></span>
         </button>
 
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Cuenta</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <div>
-                    Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+                <div class="dropdown mt-3">
+                    <button type="button"  id="nuevo" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Crear Cuenta
+                    </button>
                 </div>
                 <div class="dropdown mt-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                        Dropdown button
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                    <button type="button" class="btn btn-outline-dark">Mis Eventos</button>
                 </div>
+                <br>
+                <br>
+                <button type="button"  id="iniciar" class="btn btn-outline-info" data-bs-toggle="modal2" data-bs-target="#staticBackdrop2">
+                    Iniciar Sesión
+                </button>
             </div>
         </div>
     </div>
@@ -152,5 +149,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
