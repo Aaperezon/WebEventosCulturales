@@ -11,7 +11,13 @@
     <title>Error</title>
 </head>
 <body>
-    <h1>Oops! Ocurrió un error </h1>
-
+<br>
+<br>
+<br>
+<center>
+    <h1>Oops!</h1>
+    <h2>Ha ocurrido un error</h2>
+    <button type="button" class="btn btn-outline-danger">Volver a la página principal</button>
+</center>
 </body>
 </html>
