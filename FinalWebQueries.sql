@@ -75,11 +75,10 @@ INSERT INTO user (FK_id_user_type, user, password, name, last_name) VALUES
 (2,"organizador2",sha2("organizador2",224),"Organizador","Espinosa");
 
 INSERT INTO event_category (category) VALUES
+("Conciertos y Festivales"),
+("Teatro y Cultura"),
 ("Deportes"),
-("Comedia"),
-("Música"),
-("Teatro"),
-("Danza");
+("Familiares");
 
 
 -- QUERIES --
