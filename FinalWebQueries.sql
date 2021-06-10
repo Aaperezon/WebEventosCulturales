@@ -44,22 +44,13 @@ CREATE TABLE event(
     location TEXT NOT NULL,
     date DATE NOT NULL,
     capacity INT NOT NULL,
-    
+	picture BLOB,
+
     PRIMARY KEY (id_event),
     FOREIGN KEY (FK_id_user) REFERENCES user(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (FK_id_event_category) REFERENCES event_category(id_event_category) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
-DROP TABLE IF EXISTS event_picture;
-CREATE TABLE event_picture(
-	id INT AUTO_INCREMENT NOT NULL,
-	FK_id_event INT  NOT NULL,
-    picture BLOB NOT NULL,
-    
-    PRIMARY KEY (id),
-    FOREIGN KEY (FK_id_event) REFERENCES event(FK_id_event) ON DELETE CASCADE ON UPDATE CASCADE
-);
 
 -- INSERCIÓN DE LOS DATOS POR DEFAULT DEL SISTEMA --
 
@@ -79,16 +70,27 @@ INSERT INTO event_category (category) VALUES
 ("Teatro y Cultura"),
 ("Deportes"),
 ("Familiares");
-
+INSERT INTO event (FK_id_user, FK_id_event_category, name, description, price, location, date, capacity, picture) VALUES
+(1,1,"Primer evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
+(1,2,"Segundo evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
+(1,3,"Tercer evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
+(2,4,"Cuarto evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
+(2,1,"Quinto evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
+(2,2,"Sexto evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null);
 
 -- QUERIES --
-
+-- User DAO --
 SELECT id_user_type,type,id_user,user,password,name,last_name FROM user INNER JOIN user_type ON user.FK_id_user_type = user_type.id_user_type WHERE user.user="aaron" AND user.password=SHA2("aaron",224);
-
 
 INSERT INTO user (FK_id_user_type, user, password, name, last_name) VALUES(3,"invitado1",SHA2("invitado1",224),"Aaron","Perez O");
 
+-- Event DAO --
+SELECT category, id_event, FK_id_event_category, name, description, price, location, date, capacity, picture FROM event
+	INNER JOIN event_category ON event.FK_id_event_category = event_category.id_event_category;
 
-
+SELECT category, id_event, FK_id_event_category, event.name, description, price, location, date, capacity, picture FROM event
+	INNER JOIN event_category ON event.FK_id_event_category = event_category.id_event_category
+    INNER JOIN user ON event.FK_id_user = user.id_user
+WHERE user.id_user = 2;
 
 

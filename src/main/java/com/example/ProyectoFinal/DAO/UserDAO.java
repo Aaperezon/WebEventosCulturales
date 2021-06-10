@@ -26,12 +26,13 @@ public class UserDAO implements IUserDAO {
                 user_typeObject.setId_user_type(resultSet.getInt("id_user_type"));
                 user_typeObject.setType(resultSet.getString("type"));
                 userObject.setId_user(resultSet.getInt("id_user"));
-                userObject.setFK_id_user_type(user_typeObject);
+                userObject.setFK_id_user_type(resultSet.getInt("id_user_type"));
                 userObject.setUser(resultSet.getString("user"));
                 userObject.setPassword(resultSet.getString("password"));
                 userObject.setName(resultSet.getString("name"));
                 userObject.setLast_name(resultSet.getString("last_name"));
-
+                System.out.println(userObject.toString());
+                System.out.println(user_typeObject.toString());
                 return userObject;
             }
         }catch (Exception ex){
@@ -39,6 +40,8 @@ public class UserDAO implements IUserDAO {
         }
         return null;
     }
+
+
 
     @Override
     public User saveInvitado(String user, String password, String name, String last_name) {

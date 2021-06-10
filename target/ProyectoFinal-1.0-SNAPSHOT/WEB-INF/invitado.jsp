@@ -12,8 +12,8 @@
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-            TecTicket
+            <img src="assets/img/logotec.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            Tec Ticket
         </a>
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
             <span class="iconify" data-icon="carbon:user-avatar-filled-alt" data-inline="false"></span>
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col">
             <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                <img src="..." class="card-img-top" alt="AQUI VA LA IMAGEN DEL EVENTO">
+                <img src="assets/img/evento2.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Nombre del evento</h5>
                     <p class="card-text">Descripción del evento</p>
@@ -66,7 +66,7 @@
         </div>
         <div class="col">
             <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                <img src="..." class="card-img-top" alt="AQUI VA LA IMAGEN DEL EVENTO">
+                <img src="assets/img/evento3.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Nombre del evento</h5>
                     <p class="card-text">Descripción del evento</p>
@@ -85,7 +85,7 @@
         </div>
         <div class="col">
             <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                <img src="..." class="card-img-top" alt="AQUI VA LA IMAGEN DEL EVENTO">
+                <img src="assets/img/evento4.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Nombre del evento</h5>
                     <p class="card-text">Descripción del evento</p>
@@ -109,34 +109,31 @@
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIndex" data-bs-whatever="@logIn">Iniciar Sesión </button>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIndex" data-bs-whatever="@createAccount">Crear Cuenta </button>
 
-    <div class="modal fade" id="modalIndex" tabindex="-1" aria-labelledby="modalIndexLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalIndexLabel">Form:</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modalInde" aria-label="Close"></button>
-                    </div>
-                    <form class="needs-validation" method="POST" action="login">
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="validationCustom01" class="form-label">Usuario</label>
-                                <input type="text" class="form-control" id="validationCustom01"  name="attemptedUser" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="validationCustom02" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="validationCustom02" name="attemptedPassword" required>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modalIndex">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-                        </div>
-                    </form>
+<div class="modal fade" id="modalIndex" tabindex="-1" aria-labelledby="modalIndexLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalIndexLabel">Form:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modalInde" aria-label="Close"></button>
             </div>
+            <form class="needs-validation" method="POST" action="login">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="validationCustom01" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="validationCustom01"  name="attemptedUser" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="validationCustom02" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="validationCustom02" name="attemptedPassword" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modalIndex">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                </div>
+            </form>
         </div>
     </div>
-
-
-
+</div>
 </body>
 </html>

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private int id_user;
-    private User_Type FK_id_user_type;
+    private int FK_id_user_type;
     private String user;
     private String password;
     private String name;
@@ -13,7 +13,7 @@ public class User implements Serializable {
     public User(){
     }
 
-    public User(int id_user, User_Type FK_id_user_type, String user, String password, String name, String last_name) {
+    public User(int id_user, int FK_id_user_type, String user, String password, String name, String last_name) {
         this.id_user = id_user;
         this.FK_id_user_type = FK_id_user_type;
         this.user = user;
@@ -30,11 +30,11 @@ public class User implements Serializable {
         this.id_user = id_user;
     }
 
-    public User_Type getFK_id_user_type() {
+    public int getFK_id_user_type() {
         return FK_id_user_type;
     }
 
-    public void setFK_id_user_type(User_Type FK_id_user_type) {
+    public void setFK_id_user_type(int FK_id_user_type) {
         this.FK_id_user_type = FK_id_user_type;
     }
 

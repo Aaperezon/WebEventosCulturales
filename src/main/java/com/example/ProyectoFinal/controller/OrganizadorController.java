@@ -1,9 +1,13 @@
 package com.example.ProyectoFinal.controller;
 
+import com.example.ProyectoFinal.DAO.EventDAO;
+import com.example.ProyectoFinal.model.Event_Full;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "organizador", value = "/organizador")
 public class OrganizadorController extends HttpServlet {
@@ -12,8 +16,11 @@ public class OrganizadorController extends HttpServlet {
         HttpSession sesion = request.getSession();
         // Solo usuarios que esten logeados
         if (sesion.getAttribute("user") != null) {
-            // Deberiamos establecer un atributos usuarios que tenga una lista de usuarios
+            EventDAO eventDao = new EventDAO();
+            List<Event_Full> events = eventDao.getAllEvents();
+            request.setAttribute("events", events);
             request.getRequestDispatcher("WEB-INF/organizador.jsp").forward(request, response);
+
         }else
             request.getRequestDispatcher("WEB-INF/error.jsp").forward(request, response);
     }

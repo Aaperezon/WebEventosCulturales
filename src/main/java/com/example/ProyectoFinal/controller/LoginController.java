@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet {
             User user = userDAO.getUser(attemptedUser,attemptedPassword);
 
             if(user!=null){
-                int userType = user.getFK_id_user_type().getId_user_type();
+                int userType = user.getFK_id_user_type();
                 if(userType == 1){
                     System.out.println("Confirmacion que es administrador");
                     HttpSession sesion= request.getSession();
