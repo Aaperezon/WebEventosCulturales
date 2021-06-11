@@ -30,17 +30,19 @@ public class LoginController extends HttpServlet {
             if(user!=null){
                 int userType = user.getFK_id_user_type();
                 if(userType == 1){
-                    System.out.println("Confirmacion que es administrador");
+                    //administrador
                     HttpSession sesion= request.getSession();
                     sesion.setAttribute("user",user.getId_user());
                     response.sendRedirect("administrador");
                 }
                 else if(userType == 2){
+                    //organizador
                     HttpSession sesion= request.getSession();
                     sesion.setAttribute("user",user.getId_user());
                     response.sendRedirect("organizador");
                 }
                 else if(userType == 3){
+                    //invitado
                     HttpSession sesion= request.getSession();
                     sesion.setAttribute("user",user.getId_user());
                     response.sendRedirect("invitado");

@@ -26,7 +26,6 @@
     <br>
     <br>
     <br>
-
     <c:forEach items="${events}" var="event" varStatus="loop">
         <c:if test="${loop.index % 3 == 0}">
             <div class="row">
@@ -34,6 +33,9 @@
         <div class="col">
             <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                 <img src="..." class="card-img-top" alt="AQUI VA LA IMAGEN DEL EVENTO">
+                <%
+
+                %>
                 <div class="card-body">
                     <h5 class="card-title">${event.event.name}</h5>
                     <p class="card-text">${event.event.description}</p>
@@ -65,67 +67,64 @@
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Crear Evento</h5>
+                <h5 class="modal-title" >Crear Evento</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="formulario">
                     <div class="mb-3">
-                        <label for="nombre" class="form-label" >Nombre del evento</label>
-                        <input type="text" class="form-control" id="nombre" a>
+                        <label for="validationCustom01" class="form-label">Nombre del evento</label>
+                        <input type="text" class="form-control" id="validationCustom01"  name="name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" id="descripcion" a>
+                        <label for="validationCustom02" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="validationCustom02"  name="description" required>
                     </div>
                     <div class="mb-3">
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                Categoria
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Conciertos y Festivales</a></li>
-                                <li><a class="dropdown-item" href="#">Teatro y Cultura</a></li>
-                                <li><a class="dropdown-item" href="#">Deportes</a></li>
-                                <li><a class="dropdown-item" href="#">Familiares</a></li>
-                            </ul>
-                        </div>
+                        <select class="form-select" id="validationDefault01" required>
+                            <option selected disabled value="">Categorias</option>
+                            <option value="1">Conciertos y Festivales</option>
+                            <option value="2">Teatro y Cultura</option>
+                            <option value="3">Deportes</option>
+                            <option value="3">Familiares</option>
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="precio" class="form-label">Precio</label>
-                        <input type="number" class="form-control" id="precio" a>
+                        <label for="validationCustom03" class="form-label">Precio</label>
+                        <input type="number" class="form-control" id="validationCustom03"  name="price" required>
                     </div>
                     <div class="mb-3">
-                        <label for="ubicacion" class="form-label">Ubicación</label>
-                        <input type="text" class="form-control" id="ubicacion" a>
+                        <label for="validationCustom04" class="form-label">Ubicacion</label>
+                        <input type="text" class="form-control" id="validationCustom04"  name="location" required>
                     </div>
                     <div class="mb-3">
-                        <label for="fecha" class="form-label">Fecha</label>
-                        <input type="date" class="form-control" id="fecha" a>
+                        <label for="validationCustom05" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="validationCustom05"  name="date" required>
                     </div>
                     <div class="mb-3">
-                        <label for="capacidad" class="form-label">Capacidad del evento</label>
-                        <input type="number" class="form-control" id="capacidad" a>
+                        <label for="validationCustom06" class="form-label">Capacidad del evento</label>
+                        <input type="number" class="form-control" id="validationCustom06"  name="capacity" required>
                     </div>
                     <div class="mb-3">
-                        <label for="imagen" class="form-label">Imagen del evento</label>
-                        <input type="image" class="form-control" id="imagen">
+                        <label for="validationCustom07" class="form-label">Imagen del evento</label>
+                        <input type="file" class="form-control" id="validationCustom07"  name="picture" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" id="createEvent">Guardar</button>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="guardar">Guardar</button>
-            </div>
+
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="updateFormModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateFormModal">Crear Evento</h5>
+                <h5 class="modal-title" >Crear Evento</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -169,13 +168,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="imagen" class="form-label">Imagen del evento</label>
-                        <input type="image" class="form-control" id="update_picture">
+                        <input type="file" class="form-control" id="update_picture">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id="update_save">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="update_save">Actualizar</button>
             </div>
         </div>
     </div>

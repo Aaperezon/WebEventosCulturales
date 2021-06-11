@@ -1,9 +1,17 @@
 package com.example.ProyectoFinal.DAO;
 
+import com.example.ProyectoFinal.model.Event;
+import com.example.ProyectoFinal.model.Event_Full;
 import com.example.ProyectoFinal.model.User;
+
+import java.util.List;
 
 public interface IUserDAO {
     User getUser(String user, String password);
-    User saveInvitado(String user, String password, String name, String last_name);
+    int saveInvitado(User newUser);
+    Boolean saveOrganizer(User newUser);
+    List<User> getAllOrganizers();
+    Boolean deleteUser(int id_user);
+
 
 }

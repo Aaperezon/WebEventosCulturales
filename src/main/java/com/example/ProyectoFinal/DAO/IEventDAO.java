@@ -8,4 +8,7 @@ import java.util.List;
 public interface IEventDAO {
     List<Event_Full> getAllEvents();
     List<Event_Full> getOrganizerEvents(int idUser);
+    Boolean deleteEvent(int id_event);
+    Boolean saveEvent(Event event);
+
 }

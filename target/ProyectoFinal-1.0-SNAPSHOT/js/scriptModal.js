@@ -1,8 +1,6 @@
 $(document).ready(function() {
-
     // Gets the video src from the data-src on each button
-    
-    var $videoSrc;  
+    var $videoSrc;
     $('.video-btn').click(function() {
         $videoSrc = $(this).data( "src" );
     });
@@ -31,4 +29,4 @@ $(document).ready(function() {
       
       
     // document ready  
-    });
+});

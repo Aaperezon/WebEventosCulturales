@@ -71,12 +71,12 @@ INSERT INTO event_category (category) VALUES
 ("Deportes"),
 ("Familiares");
 INSERT INTO event (FK_id_user, FK_id_event_category, name, description, price, location, date, capacity, picture) VALUES
-(1,1,"Primer evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
-(1,2,"Segundo evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
-(1,3,"Tercer evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
-(2,4,"Cuarto evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
-(2,1,"Quinto evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
-(2,2,"Sexto evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null);
+(3,1,"Primer evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
+(3,2,"Segundo evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
+(4,3,"Tercer evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
+(3,4,"Cuarto evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
+(4,1,"Quinto evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null),
+(4,2,"Sexto evento","Este es el primer evento creado por TecTicket", 192.3, "En la esquina de la calle 1, en frente de la otra esquina", "2020-06-07", 1000, null);
 
 -- QUERIES --
 -- User DAO --
@@ -93,4 +93,8 @@ SELECT category, id_event, FK_id_event_category, event.name, description, price,
     INNER JOIN user ON event.FK_id_user = user.id_user
 WHERE user.id_user = 2;
 
+SELECT id_user, FK_id_user_type, user, name, last_name FROM user WHERE FK_id_user_type = 2;
+
+SELECT * from user;
+SELECT * from event;
 

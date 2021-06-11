@@ -1,11 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-    <script src="${pageContext.servletContext.contextPath}/js/usuario.js" /></script>
     <title>TecTicket</title>
 </head>
 <body>
@@ -44,96 +45,36 @@
     <br>
     <br>
     <br>
-    <div class="row">
+    <c:forEach items="${events}" var="event" varStatus="loop">
+        <c:if test="${loop.index % 3 == 0}">
+            <div class="row">
+        </c:if>
         <div class="col">
             <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                <img src="assets/img/evento2.jpg" class="card-img-top">
+                <img src="" class="card-img-top" alt="AQUI VA IMAGEN">
                 <div class="card-body">
-                    <h5 class="card-title">Nombre del evento</h5>
-                    <p class="card-text">Descripción del evento</p>
+                    <h5 class="card-title">${event.event.name}</h5>
+                    <p class="card-text">${event.event.description}</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Categoria</li>
-                    <li class="list-group-item">Precio</li>
-                    <li class="list-group-item">Ubicacion</li>
-                    <li class="list-group-item">Fecha</li>
-                    <li class="list-group-item">Capacidad del evento</li>
+                    <li class="list-group-item">${event.event_category.category}</li>
+                    <li class="list-group-item">${event.event.price}</li>
+                    <li class="list-group-item">${event.event.location}</li>
+                    <li class="list-group-item">${event.event.date}</li>
+                    <li class="list-group-item">${event.event.capacity}</li>
                 </ul>
                 <div class="d-grid gap-2">
                     <button class="btn btn-primary" type="button">Asistir</button>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                <img src="assets/img/evento3.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Nombre del evento</h5>
-                    <p class="card-text">Descripción del evento</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Categoria</li>
-                    <li class="list-group-item">Precio</li>
-                    <li class="list-group-item">Ubicacion</li>
-                    <li class="list-group-item">Fecha</li>
-                    <li class="list-group-item">Capacidad del evento</li>
-                </ul>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">Asistir</button>
-                </div>
+        <c:if test="${loop.index % 3 == 0}">
             </div>
-        </div>
-        <div class="col">
-            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                <img src="assets/img/evento4.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Nombre del evento</h5>
-                    <p class="card-text">Descripción del evento</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Categoria</li>
-                    <li class="list-group-item">Precio</li>
-                    <li class="list-group-item">Ubicacion</li>
-                    <li class="list-group-item">Fecha</li>
-                    <li class="list-group-item">Capacidad del evento</li>
-                </ul>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">Asistir</button>
-                </div>
-            </div>
-        </div>
-    </div>
+        </c:if>
+
+    </c:forEach>
 </div>
 
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIndex" data-bs-whatever="@logIn">Iniciar Sesión </button>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIndex" data-bs-whatever="@createAccount">Crear Cuenta </button>
-
-<div class="modal fade" id="modalIndex" tabindex="-1" aria-labelledby="modalIndexLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalIndexLabel">Form:</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modalInde" aria-label="Close"></button>
-            </div>
-            <form class="needs-validation" method="POST" action="login">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="validationCustom01" class="form-label">Usuario</label>
-                        <input type="text" class="form-control" id="validationCustom01"  name="attemptedUser" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="validationCustom02" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="validationCustom02" name="attemptedPassword" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modalIndex">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 </body>
 </html>
