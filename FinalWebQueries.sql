@@ -106,7 +106,7 @@ SELECT category, id_event, FK_id_event_category, event.name, description, price,
     INNER JOIN user ON event.FK_id_user = user.id_user
 WHERE user.id_user = 2;
 
-SELECT count(FK_id_user) FROM assistance WHERE FK_id_event = 5;
+SELECT count(FK_id_user) FROM assistance WHERE FK_id_event =2;
 
 SELECT id_user, FK_id_user_type, user, name, last_name FROM user WHERE FK_id_user_type = 2;
 

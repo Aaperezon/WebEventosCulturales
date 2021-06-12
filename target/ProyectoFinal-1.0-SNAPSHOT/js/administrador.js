@@ -68,35 +68,37 @@ let load = () => {
         let password = document.getElementById("validationCustom04").value;
         let name = document.getElementById("validationCustom06").value;
         let last_name = document.getElementById("validationCustom07").value;
+        if (user != "" && password != "" && name != "" && last_name != ""){
+            // SE GENERA EL FORM DATA CON LA INFORMACION OBTENIDA
+            let formData = new FormData();
+            formData.append("user", user)
+            formData.append("password", password)
+            formData.append("name", name)
+            formData.append("last_name", last_name)
+            formData.append("request_type", "create")
 
-        // SE GENERA EL FORM DATA CON LA INFORMACION OBTENIDA
-        let formData = new FormData();
-        formData.append("user", user)
-        formData.append("password", password)
-        formData.append("name", name)
-        formData.append("last_name", last_name)
-        formData.append("request_type", "create")
-
-        // SE HACE LA LLAMADA ASINCRONA AL SERVLET
-        fetch("administrador", {
-            method: 'POST',
-            body: formData
-        }).then(
-            response => response.json()
-        ).then(
-            response => {
-                if(response.mensaje != undefined) {
-                    alert(response.mensaje)
-                }else if(response.persona.IdPersona == 0 || response.persona.IdPersona == undefined){
-                    alert("Ops! algo pasó!");
-                }else{
-                    alert(mensaje);
+            // SE HACE LA LLAMADA ASINCRONA AL SERVLET
+            fetch("administrador", {
+                method: 'POST',
+                body: formData
+            }).then(
+                response => response.json()
+            ).then(
+                response => {
+                    if(response.mensaje != undefined) {
+                        alert(response.mensaje)
+                    }else if(response.persona.IdPersona == 0 || response.persona.IdPersona == undefined){
+                        alert("Ops! algo pasó!");
+                    }else{
+                        alert(mensaje);
+                    }
+                    document.getElementById("createAccountForm").reset();
                 }
-                document.getElementById("createAccountForm").reset();
-            }
-        ).catch(
-            error => console.log(error)
-        )
+            ).catch(
+                error => console.log(error)
+            )
+        }
+
     })
 
     let logout = document.getElementById("logout");

@@ -73,31 +73,33 @@ let load = () => {
         let location = document.getElementById("validationCustom04").value;
         let date = document.getElementById("validationCustom05").value;
         let capacity = document.getElementById("validationCustom06").value;
+        if(name != "" && description != "" && category != "" && price != "" && location != "" && date != "" && capacity != "" ){
+            // SE GENERA EL FORM DATA CON LA INFORMACION OBTENIDA
+            let formData = new FormData();
+            formData.append("name", name)
+            formData.append("description", description)
+            formData.append("category", category)
+            formData.append("price", price)
+            formData.append("location", location)
+            formData.append("date", date)
+            formData.append("capacity", capacity)
+            formData.append("request_description", "createEvent")
 
-        // SE GENERA EL FORM DATA CON LA INFORMACION OBTENIDA
-        let formData = new FormData();
-        formData.append("name", name)
-        formData.append("description", description)
-        formData.append("category", category)
-        formData.append("price", price)
-        formData.append("location", location)
-        formData.append("date", date)
-        formData.append("capacity", capacity)
-        formData.append("request_description", "createEvent")
+            // SE HACE LA LLAMADA ASINCRONA AL SERVLET
+            fetch("organizador", {
+                method: 'POST',
+                body: formData
+            }).then(
+                response => response
+            ).then(
+                response => {
+                    window.location = "./organizador";
+                }
+            ).catch(
+                error => console.log(error)
+            )
+        }
 
-        // SE HACE LA LLAMADA ASINCRONA AL SERVLET
-        fetch("organizador", {
-            method: 'POST',
-            body: formData
-        }).then(
-            response => response
-        ).then(
-            response => {
-                window.location = "./organizador";
-            }
-        ).catch(
-            error => console.log(error)
-        )
     })
     let logout = document.getElementById("logout");
     logout.addEventListener("click", () => {
@@ -131,28 +133,31 @@ let load = () => {
         let date = document.getElementById("validationCustom11").value;
         let capacity = document.getElementById("validationCustom12").value;
         let id_event = document.getElementById("id_event").value;
-        let formData = new FormData();
-        formData.append("name", name)
-        formData.append("description", description)
-        formData.append("category", category)
-        formData.append("price", price)
-        formData.append("location", location)
-        formData.append("date", date)
-        formData.append("capacity", capacity)
-        formData.append("id_event", id_event)
+        if(name != "" && description != "" && category != "" && price != "" && location != "" && date != "" && capacity != "" && id_event != ""){
+            let formData = new FormData();
+            formData.append("name", name)
+            formData.append("description", description)
+            formData.append("category", category)
+            formData.append("price", price)
+            formData.append("location", location)
+            formData.append("date", date)
+            formData.append("capacity", capacity)
+            formData.append("id_event", id_event)
 
-        fetch("organizador", {
-            method: 'PUT',
-            body: formData
-        }).then(
-            response => response
-        ).then(
-            response => {
-                window.location = "./organizador";
-            }
-        ).catch(
-            error => console.log(error)
-        )
+            fetch("organizador", {
+                method: 'PUT',
+                body: formData
+            }).then(
+                response => response
+            ).then(
+                response => {
+                    window.location = "./organizador";
+                }
+            ).catch(
+                error => console.log(error)
+            )
+        }
+
     })
 
 

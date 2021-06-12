@@ -67,7 +67,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="formulario">
+                <form class="needs-validation" id="formulario">
                     <div class="mb-3">
                         <label for="validationCustom01" class="form-label">Nombre del evento</label>
                         <input type="text" class="form-control" id="validationCustom01"  name="name" required>
@@ -138,7 +138,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="updateForm">
+                <form class="needs-validation" id="updateForm">
                     <div class="mb-3">
                         <label for="validationCustom07" class="form-label">Nombre del evento</label>
                         <input type="text" class="form-control" id="validationCustom07"  name="name" required>
