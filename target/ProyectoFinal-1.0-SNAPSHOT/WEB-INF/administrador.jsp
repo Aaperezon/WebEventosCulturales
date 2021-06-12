@@ -19,12 +19,14 @@
             <img src="assets/img/logotec.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
             Tec Ticket
         </a>
-        <button type="button"  id="nuevo" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#createAccountModal">
-            Crear Cuenta Organizador
-        </button>
-        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
-            Cerrar Sesión
-        </button>
+        <center>
+            <button type="button"  id="nuevo" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createAccountModal">
+                Crear Cuenta Organizador
+            </button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                Cerrar Sesión
+            </button>
+        </center>
     </div>
 </nav>
 <div class="container">
@@ -60,7 +62,7 @@
             <div class="row">
         </c:if>
             <div class="col">
-                    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                         <img src="assets/img/evento1.jpg" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">${event.event.name}</h5>
@@ -78,10 +80,6 @@
                         </div>
                     </div>
                 </div>
-        <c:if test="${loop.index % 3 == 0}">
-            </div>
-        </c:if>
-
     </c:forEach>
 
 
@@ -104,12 +102,12 @@
     </div>
 </div>
 
-    <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="createAccountModalLabel" aria-hidden="true">
+    <div class="modal fade" id="createAccountModal"  data-bs-backdrop="static" tabindex="-1" aria-labelledby="createAccountModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="createAccountModalLabel">Crear Cuenta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="createAccountModal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form class="needs-validation" id="createAccountForm" oninput='newPasswordConfirmation.setCustomValidity(newPassword.value != newPasswordConfirmation.value ? "Las contraseñas no coinciden." : "")'>
                     <div class="modal-body">
@@ -135,7 +133,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="createAccountModalLabel">Cancelar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary" id="createOrganizer">Crear Cuenta</button>
                     </div>
                 </form>

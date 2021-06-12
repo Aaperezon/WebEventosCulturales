@@ -14,16 +14,28 @@
     <title>TecTicket</title>
 </head>
 <body>
-
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logInModal" >Iniciar Sesión </button>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAccountModal" >Crear Cuenta </button>
-
-            <div class="modal fade" id="logInModal" tabindex="-1" aria-labelledby="logInModalLabel" aria-hidden="true">
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/img/logotec.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                Tec Ticket
+            </a>
+            <center>
+                <button type="button"  id="iniciarsesion" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#logInModal">
+                    Iniciar Sesión
+                </button>
+                <button type="button"  id="crearcuenta" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createAccountModal">
+                    Crear Cuenta
+                </button>
+            </center>
+        </div>
+    </nav>
+            <div class="modal fade" id="logInModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="logInModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="logInModalLabel">Iniciar Sesión</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="logInModal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form class="needs-validation" method="POST" action="login">
                             <div class="modal-body">
@@ -37,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="logInModal">Cancelar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                             </div>
                         </form>
@@ -45,12 +57,12 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="createAccountModalLabel" aria-hidden="true">
+            <div class="modal fade" id="createAccountModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="createAccountModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="createAccountModalLabel">Crear Cuenta</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="createAccountModal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form class="needs-validation" id="createAccountForm" action="signup" method="POST" oninput='newPasswordConfirmation.setCustomValidity(newPassword.value != newPasswordConfirmation.value ? "Las contraseñas no coinciden." : "")'>
                             <div class="modal-body">
@@ -76,25 +88,13 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="createAccountModalLabel">Cancelar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary" id="createGuest">Crear Cuenta</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
-
-
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="assets/img/logotec.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-            Tec Ticket
-        </a>
-    </div>
-</nav>
-
 
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -111,29 +111,8 @@
                 <h5>TecTicket es la página de difusión de eventos prefecta para ti</h5>
                 <p> Aqui podrás encontrar todo tipo de eventos para ir con tu familia o amigos</p>
                 <h1>¿Cómo deseas ingresar?</h1>
-                <button type="button" class="btn btn-primary video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/DuRF0Jh7SCk" data-target="#myModal">
-                    Invitado
-                </button>
-                <!-- Button trigger modal Organizador-->
-                <button type="button" class="btn btn-primary video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/xXKx8Kbzi9A" data-target="#myModal">
-                    Organizador
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <!-- 16:9 aspect ratio -->
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a class="btn btn-primary btn-xl" href="#tutorialInvitado">Invitado</a>
+                <a class="btn btn-primary btn-xl" href="#tutorialOrganizador">Organizador</a>
                 <br>
                 <br>
             </div>
@@ -176,5 +155,54 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+    <div class="p-3 mb-2 bg-light text-dark" id="tutorialInvitado">
+        <br>
+        <br>
+        <center>
+            <h3 class="text-secondary mb-0">Tutorial</h3>
+            <h2 class="mb-5">Perfil de Invitado</h2>
+        </center>
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/7sjvua4VjzE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="p-3 mb-2 bg-dark text-white" id="tutorialOrganizador">
+        <br>
+        <br>
+        <center>
+            <h3 class="text-secondary mb-0">Tutorial</h3>
+            <h2 class="mb-5">Perfil de Organizador</h2>
+        </center>
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/4fndeDfaWCg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+    <footer class="footer text-center">
+        <div class="container px-4 px-lg-5">
+            <p class="text-muted small mb-0">Copyright &copy;Andrea Espinosa Azuela - Aarón Perez Ontiveros</p>
+        </div>
+    </footer>
 </body>
 </html>

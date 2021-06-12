@@ -16,30 +16,18 @@
             <img src="assets/img/logotec.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
             Tec Ticket
         </a>
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-            <span class="iconify" data-icon="carbon:user-avatar-filled-alt" data-inline="false"></span>
-        </button>
-
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Cuenta</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div class="dropdown mt-3">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIndex" data-bs-whatever="@createAcount">Crear Cuenta</button>
-
-                </div>
-                <div class="dropdown mt-3">
-                    <button type="button" class="btn btn-outline-dark">
-                        Mis Eventos
-                    </button>
-                </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIndex" data-bs-whatever="@LogIn">Iniciar Sesión</button>
-
-            </div>
+        <center>
+            <button type="button"  id="cartelera" class="btn btn-outline-primary">
+               Cartelera
+            </button>
+            <button type="button" class="btn btn-outline-primary">
+                Mis Eventos
+            </button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                Cerrar Sesión
+            </button>
+        </center>
         </div>
-    </div>
 </nav>
 <div class="container">
     <br>
@@ -50,7 +38,7 @@
             <div class="row">
         </c:if>
         <div class="col">
-            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                 <img src="" class="card-img-top" alt="AQUI VA IMAGEN">
                 <div class="card-body">
                     <h5 class="card-title">${event.event.name}</h5>
@@ -68,13 +56,26 @@
                 </div>
             </div>
         </div>
-        <c:if test="${loop.index % 3 == 0}">
-            </div>
-        </c:if>
-
     </c:forEach>
 </div>
-
+    <!-- Modal Cerrar Sesion -->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel2">Cerrar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro que deseas cerrar la sesión?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" id="logout">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

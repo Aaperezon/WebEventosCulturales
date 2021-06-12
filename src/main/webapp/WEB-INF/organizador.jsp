@@ -14,12 +14,17 @@
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            <img src="assets/img/logotec.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
             TecTicket
         </a>
-        <button type="button"  id="nuevo" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Crear Evento
-        </button>
+        <center>
+            <button type="button"  id="nuevo" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Crear Evento
+            </button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+            Cerrar Sesión
+            </button>
+        </center>
     </div>
 </nav>
 <div class="container">
@@ -31,7 +36,7 @@
             <div class="row">
         </c:if>
         <div class="col">
-            <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                 <img src="..." class="card-img-top" alt="AQUI VA LA IMAGEN DEL EVENTO">
                 <%
 
@@ -51,16 +56,11 @@
                 <div class="d-grid gap-2">
                     <button class="btn btn-danger" type="button" data-id="${event.event.id_event}">Eliminar evento</button>
                 </div>
-                <br>
                 <div class="d-grid gap-2">
                     <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#updateFormModal" data-id="${event.event.id_event}">Actualizar evento</button>
                 </div>
             </div>
         </div>
-        <c:if test="${loop.index % 3 == 0}">
-            </div>
-        </c:if>
-
     </c:forEach>
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -77,7 +77,7 @@
                         <input type="text" class="form-control" id="validationCustom01"  name="name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="validationCustom02" class="form-label">Description</label>
+                        <label for="validationCustom02" class="form-label">Descripción</label>
                         <input type="text" class="form-control" id="validationCustom02"  name="description" required>
                     </div>
                     <div class="mb-3">
@@ -119,6 +119,24 @@
         </div>
     </div>
 </div>
+    <!-- Modal Cerrar Sesion -->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel2">Cerrar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro que deseas cerrar la sesión?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" id="logout">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <div class="modal fade" id="updateFormModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
