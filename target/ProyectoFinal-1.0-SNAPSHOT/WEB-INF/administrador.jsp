@@ -29,10 +29,11 @@
         </center>
     </div>
 </nav>
+<br>
 <div class="container">
-    <br>
-    <br>
-    <br>
+<p class="lead" >
+    Organizadores Activos
+</p>
     <c:forEach items="${users}" var="user" varStatus="loop">
     <c:if test="${loop.index % 3 == 0}">
     <div class="row">
@@ -51,12 +52,10 @@
                 </div>
             </div>
         </div>
-        <c:if test="${loop.index % 3 == 0}">
-    </div>
-    </c:if>
-
     </c:forEach>
-
+    <p class="lead">
+        Eventos
+    </p>
     <c:forEach items="${events}" var="event" varStatus="loop">
         <c:if test="${loop.index % 3 == 0}">
             <div class="row">
