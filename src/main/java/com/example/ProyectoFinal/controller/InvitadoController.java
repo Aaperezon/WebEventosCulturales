@@ -19,37 +19,43 @@ public class InvitadoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession sesion = request.getSession();
-
         if (sesion.getAttribute("user") != null) {
-            System.out.println(request.getParameter("user"));
-            EventDAO eventDao = new EventDAO();
-            List<Event_Full> events = eventDao.getAllEvents();
-            request.setAttribute("events", events);
-            request.getRequestDispatcher("WEB-INF/invitado.jsp").forward(request, response);
+            String request_parameter = request.getParameter("request_description") == null ? "": request.getParameter("request_description");
+            if(request_parameter.equals("")){
+                int id_user = Integer.parseInt(sesion.getAttribute("user").toString());
+                EventDAO eventDao = new EventDAO();
+                List<Event_Full> events = eventDao.getNotAttendanceEvents(id_user);
+                request.setAttribute("events", events);
+                request.setAttribute("bloqueado", false);
+                request.getRequestDispatcher("WEB-INF/invitado.jsp").forward(request, response);
+            }
+            if(request_parameter.equals("1")){
+                int id_user = Integer.parseInt(sesion.getAttribute("user").toString());
+                EventDAO eventDao = new EventDAO();
+                List<Event_Full> events = eventDao.getAttendanceEvents(id_user);
+                request.setAttribute("events", events);
+                request.setAttribute("bloqueado", true);
+                request.getRequestDispatcher("WEB-INF/invitado.jsp").forward(request, response);
+            }
         }else
             request.getRequestDispatcher("WEB-INF/error.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String request_parameter = request.getParameter("request_type") == "" ? "error": request.getParameter("request_type");
-        if(request_parameter.equals("create")){
-            User newUser = new User();
-            newUser.setUser(request.getParameter("user"));
-            newUser.setPassword(request.getParameter("password"));
-            newUser.setName(request.getParameter("name"));
-            newUser.setLast_name(request.getParameter("last_name"));
-
+        String request_parameter = request.getParameter("request_description") == "" ? "error": request.getParameter("request_description");
+        if(request_parameter.equals("logout")){
+            request.getSession().invalidate();
+        }
+        else if(request_parameter.equals("attend")){
+            HttpSession sesion = request.getSession();
+            int id_event = Integer.parseInt(request.getParameter("id_event"));
+            int id_user = Integer.parseInt(sesion.getAttribute("user").toString());
             UserDAO userDAO = new UserDAO();
-            int id_user = userDAO.saveInvitado(newUser);
-            //HttpSession sesion = request.getSession();
-            //sesion.invalidate();
-            //sesion.setAttribute("user",id_user);
-            response.sendRedirect("invitado");
-
+            userDAO.setUserAttendance(id_user,id_event);
 
         }
+
 
 
     }

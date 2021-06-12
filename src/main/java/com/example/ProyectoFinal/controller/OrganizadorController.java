@@ -4,6 +4,8 @@ import com.example.ProyectoFinal.DAO.EventDAO;
 import com.example.ProyectoFinal.DAO.UserDAO;
 import com.example.ProyectoFinal.model.Event;
 import com.example.ProyectoFinal.model.Event_Full;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -47,16 +49,23 @@ public class OrganizadorController extends HttpServlet {
             event.setDescription(request.getParameter("description"));
             event.setDate(Date.valueOf(request.getParameter("date")));
             event.setCapacity(Integer.parseInt(request.getParameter("capacity")));
-            event.setPicture(request.getPart("picture").getInputStream());
 
             EventDAO eventDAO = new EventDAO();
             eventDAO.saveEvent(event);
 
         }
         else if(request_description.equals("logout")){
-            HttpSession sesion = request.getSession();
-            sesion.invalidate();
-            request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+            request.getSession().invalidate();
+        }
+        else if(request_description.equals("update")){
+            int id_event = Integer.parseInt(request.getParameter("id_event"));
+            EventDAO eventDAO = new EventDAO();
+            Event_Full event = eventDAO.getEvent(id_event);
+
+            Gson gson=new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+            response.setContentType("application/json");
+            PrintWriter out=response.getWriter();
+            out.print(gson.toJson(event));
         }
     }
 
@@ -71,6 +80,18 @@ public class OrganizadorController extends HttpServlet {
     }
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Event event = new Event();
+        event.setName(request.getParameter("name"));
+        event.setId_event(Integer.parseInt(request.getParameter("id_event")));
 
+        event.setFK_id_event_category(Integer.parseInt(request.getParameter("category")));
+
+        event.setPrice(Float.parseFloat(request.getParameter("price")));
+        event.setLocation(request.getParameter("location"));
+        event.setDescription(request.getParameter("description"));
+        event.setDate(Date.valueOf(request.getParameter("date")));
+        event.setCapacity(Integer.parseInt(request.getParameter("capacity")));
+        EventDAO eventDAO = new EventDAO();
+        eventDAO.updateEvent(event);
     }
 }

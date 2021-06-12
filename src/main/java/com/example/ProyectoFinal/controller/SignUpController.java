@@ -18,15 +18,21 @@ public class SignUpController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User newUser = new User();
-        newUser.setUser(request.getParameter("validationCustom03"));
-        newUser.setPassword(request.getParameter("validationCustom04"));
-        newUser.setName(request.getParameter("validationCustom06"));
-        newUser.setLast_name(request.getParameter("validationCustom07"));
+        newUser.setUser(request.getParameter("newUser"));
+        newUser.setPassword(request.getParameter("newPassword"));
+        newUser.setName(request.getParameter("newName"));
+        newUser.setLast_name(request.getParameter("newLastName"));
         UserDAO userDAO = new UserDAO();
         int id_user = userDAO.saveInvitado(newUser);
-        HttpSession sesion = request.getSession();
-        sesion.setAttribute("user",id_user);
-        response.sendRedirect("invitado");
+        if(id_user != -1){
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("user",id_user);
+            response.sendRedirect("invitado");
+        }else{
+            request.setAttribute("mensaje","Intenta otro usuario, este ya existe");
+            request.getRequestDispatcher("WEB-INF/index.jsp").forward(request,response);
+        }
+
 
     }
 }

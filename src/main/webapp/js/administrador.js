@@ -54,7 +54,7 @@ let load = () => {
             )
         }
     }
-    let deleteOrganizerBtn = document.querySelectorAll(".btn-danger");
+    let deleteOrganizerBtn = document.querySelectorAll(".btn-outline-danger");
     deleteOrganizerBtn.forEach(function (elemento) {
         elemento.addEventListener("click", deleteOrganizer);
     })
@@ -110,10 +110,10 @@ let load = () => {
             method: 'POST',
             body: formData
         }).then(
-            response => response.json()
+            response => response
         ).then(
             response => {
-                location.reload();
+                window.location = "./";
             }
         ).catch(
             error => console.log(error)

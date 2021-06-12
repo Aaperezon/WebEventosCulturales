@@ -46,21 +46,35 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public int saveInvitado(User newUser) {
-        String sql = "INSERT INTO user (FK_id_user_type, user, password, name, last_name) VALUES(3,?,SHA2(?,224),?,?);";
         int idUser = -1;
+        String sql = "SELECT * FROM user WHERE user=?";
+        boolean exists = false;
         try {
             Connection conexion = MySQLConnection.getConnection();
             PreparedStatement preparedStatement = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, newUser.getUser());
-            preparedStatement.setString(2, newUser.getPassword());
-            preparedStatement.setString(3, newUser.getName());
-            preparedStatement.setString(4, newUser.getLast_name());
-            int affectedRows = preparedStatement.executeUpdate();
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            resultSet.next();
-            idUser = resultSet.getInt(1); // Obtener el indice
+            ResultSet resultSet = preparedStatement.executeQuery();
+            exists = resultSet.next();
+
         }catch (Exception ex){
             System.out.println(ex.getMessage());
+        }
+        if(exists == false){
+            String sql2 = "INSERT INTO user (FK_id_user_type, user, password, name, last_name) VALUES(3,?,SHA2(?,224),?,?);";
+            try {
+                Connection conexion = MySQLConnection.getConnection();
+                PreparedStatement preparedStatement = conexion.prepareStatement(sql2, Statement.RETURN_GENERATED_KEYS);
+                preparedStatement.setString(1, newUser.getUser());
+                preparedStatement.setString(2, newUser.getPassword());
+                preparedStatement.setString(3, newUser.getName());
+                preparedStatement.setString(4, newUser.getLast_name());
+                int affectedRows = preparedStatement.executeUpdate();
+                ResultSet resultSet = preparedStatement.getGeneratedKeys();
+                resultSet.next();
+                idUser = resultSet.getInt(1); // Obtener el indice
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
         }
         return idUser;
     }
@@ -115,11 +129,35 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public Boolean deleteUser(int id_user) {
-        String sql="DELETE FROM user WHERE id_user=?";
+        String sql1="DELETE FROM user WHERE id_user=?";
+        String sql2="DELETE FROM event WHERE FK_id_user=?";
+        String sql3="DELETE FROM assistance WHERE FK_id_user=?";
+        try {
+            Connection conexion = MySQLConnection.getConnection();
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql1);
+            preparedStatement.setInt(1,id_user);
+            preparedStatement.executeUpdate();
+            preparedStatement = conexion.prepareStatement(sql2);
+            preparedStatement.setInt(1,id_user);
+            preparedStatement.executeUpdate();
+            preparedStatement = conexion.prepareStatement(sql3);
+            preparedStatement.setInt(1,id_user);
+            preparedStatement.executeUpdate();
+            return true;
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean setUserAttendance(int id_user, int id_event) {
+        String sql=" INSERT INTO assistance (FK_id_user, FK_id_event) VALUES (?,?);";
         try {
             Connection conexion = MySQLConnection.getConnection();
             PreparedStatement preparedStatement = conexion.prepareStatement(sql);
             preparedStatement.setInt(1,id_user);
+            preparedStatement.setInt(2,id_event);
             preparedStatement.executeUpdate();
             return true;
         }catch (Exception ex){

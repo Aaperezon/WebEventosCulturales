@@ -56,6 +56,9 @@
                     </div>
                 </div>
             </div>
+            <div style="color: red">
+                ${mensaje}
+            </div>
 
             <div class="modal fade" id="createAccountModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="createAccountModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -118,28 +121,28 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img src="assets/img/evento1.jpg" class="d-block w-100" alt="...">
+            <img src="assets/img/Conciertos y Festivales.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Conciertos y Festivales</h5>
                 <p>Para bailar y divertirte un rato</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="assets/img/evento2.jpg" class="d-block w-100" alt="...">
+            <img src="assets/img/Teatro y Cultura.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Teatro y Cultura</h5>
                 <p>Sorpréndete con la mágia del teatro</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="assets/img/evento3.jpg" class="d-block w-100" alt="...">
+            <img src="assets/img/Deportes.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Deportes</h5>
                 <p>Para nunca perderte un buen partido</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="assets/img/evento4.jpg" class="d-block w-100" alt="...">
+            <img src="assets/img/Familiares.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Familiares</h5>
                 <p>Qué mejor que un momento en familia</p>

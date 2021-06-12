@@ -19,7 +19,6 @@ public class AdministradorController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession sesion = request.getSession();
-        // Solo usuarios que esten logeados
         if (sesion.getAttribute("user") != null) {
             EventDAO eventDao = new EventDAO();
             UserDAO userDAO = new UserDAO();
@@ -57,9 +56,7 @@ public class AdministradorController extends HttpServlet {
             out.print(mensaje);
         }
         else if(request_parameter.equals("logout")){
-            HttpSession sesion = request.getSession();
-            sesion.invalidate();
-            request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+            request.getSession().invalidate();
         }
     }
     @Override

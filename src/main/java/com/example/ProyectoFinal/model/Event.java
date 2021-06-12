@@ -15,10 +15,9 @@ public class Event implements Serializable {
     private String location;
     private Date date;
     private int capacity;
-    private InputStream picture;
     public Event() {
     }
-    public Event(int id_event, int FK_id_user, int FK_id_event_category, String name, String description, float price, String location, Date date, int capacity, InputStream picture) {
+    public Event(int id_event, int FK_id_user, int FK_id_event_category, String name, String description, float price, String location, Date date, int capacity) {
         this.id_event = id_event;
         this.FK_id_user = FK_id_user;
         this.FK_id_event_category = FK_id_event_category;
@@ -28,7 +27,6 @@ public class Event implements Serializable {
         this.location = location;
         this.date = date;
         this.capacity = capacity;
-        this.picture = picture;
     }
 
     public int getId_event() {
@@ -103,13 +101,7 @@ public class Event implements Serializable {
         this.capacity = capacity;
     }
 
-    public InputStream getPicture() {
-        return picture;
-    }
 
-    public void setPicture(InputStream picture) {
-        this.picture = picture;
-    }
 
     @Override
     public String toString() {
@@ -123,7 +115,6 @@ public class Event implements Serializable {
                 ", location='" + location + '\'' +
                 ", date=" + date +
                 ", capacity=" + capacity +
-                ", picture=" + picture +
                 '}';
     }
 }

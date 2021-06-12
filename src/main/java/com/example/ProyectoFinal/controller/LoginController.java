@@ -20,9 +20,6 @@ public class LoginController extends HttpServlet {
         String attemptedUser=request.getParameter("attemptedUser");
         String attemptedPassword=request.getParameter("attemptedPassword");
 
-        //System.out.println(attemptedUser);
-        //System.out.println(attemptedPassword);
-
         if(!attemptedUser.equals("") && !attemptedPassword.equals("") ){
             UserDAO userDAO=new UserDAO();
             User user = userDAO.getUser(attemptedUser,attemptedPassword);
@@ -49,11 +46,11 @@ public class LoginController extends HttpServlet {
                 }
             }else{
                 request.setAttribute("mensaje","Error al iniciar sesión, verifica el usuario y la contraseña");
-                request.getRequestDispatcher("WEB-INF/error.jsp").forward(request,response);
+                request.getRequestDispatcher("WEB-INF/index.jsp").forward(request,response);
             }
         }else{
             request.setAttribute("mensaje","El usuario o contraseña no son validos");
-            request.getRequestDispatcher("WEB-INF/error.jsp").forward(request,response);
+            request.getRequestDispatcher("WEB-INF/index.jsp").forward(request,response);
 
         }
     }

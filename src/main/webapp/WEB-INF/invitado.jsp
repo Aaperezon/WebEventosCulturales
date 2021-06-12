@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/invitado.js" /></script>
+
     <title>TecTicket</title>
 </head>
 <body>
@@ -20,7 +22,7 @@
             <button type="button"  id="cartelera" class="btn btn-outline-primary">
                Cartelera
             </button>
-            <button type="button" class="btn btn-outline-primary">
+            <button type="button" id="misEventos" class="btn btn-outline-primary">
                 Mis Eventos
             </button>
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
@@ -39,20 +41,25 @@
         </c:if>
         <div class="col">
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                <img src="" class="card-img-top" alt="AQUI VA IMAGEN">
+                <img src="assets/img/${event.event_category.category}.jpg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">${event.event.name}</h5>
                     <p class="card-text">${event.event.description}</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">${event.event_category.category}</li>
-                    <li class="list-group-item">${event.event.price}</li>
-                    <li class="list-group-item">${event.event.location}</li>
-                    <li class="list-group-item">${event.event.date}</li>
-                    <li class="list-group-item">${event.event.capacity}</li>
+                    <li class="list-group-item">Categoria: ${event.event_category.category}</li>
+                    <li class="list-group-item">Precio: ${event.event.price}</li>
+                    <li class="list-group-item">Ubicacion: ${event.event.location}</li>
+                    <li class="list-group-item">Fecha: ${event.event.date}</li>
+                    <li class="list-group-item">Cupo: ${event.event.capacity}</li>
                 </ul>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">Asistir</button>
+                    <c:if test="${bloqueado==true}">
+                            <button class="btn btn-primary" type="button" data-id="${event.event.id_event}" disabled>Asistir</button>
+                    </c:if>
+                    <c:if test="${bloqueado==false}">
+                        <button class="btn btn-primary" type="button" data-id="${event.event.id_event}">Asistir</button>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -71,7 +78,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-primary" id="logout">Si</button>
+                    <button type="button" class="btn btn-success" id="logout">Si</button>
                 </div>
             </div>
         </div>

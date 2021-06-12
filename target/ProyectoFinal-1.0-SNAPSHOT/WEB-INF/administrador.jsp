@@ -48,7 +48,7 @@
                     <li class="list-group-item">${user.last_name}</li>
                 </ul>
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-danger"  data-id="${user.id_user}"> Eliminar Organizador </button>
+                    <button type="button" class="btn btn-outline-danger"  data-id="${user.id_user}"> Eliminar Organizador </button>
                 </div>
             </div>
         </div>
@@ -62,17 +62,17 @@
         </c:if>
             <div class="col">
                     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                        <img src="assets/img/evento1.jpg" class="card-img-top">
+                        <img src="assets/img/${event.event_category.category}.jpg" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">${event.event.name}</h5>
                             <p class="card-text">${event.event.description}</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${event.event_category.category}</li>
-                            <li class="list-group-item">${event.event.price}</li>
-                            <li class="list-group-item">${event.event.location}</li>
-                            <li class="list-group-item">${event.event.date}</li>
-                            <li class="list-group-item">${event.event.capacity}</li>
+                            <li class="list-group-item">Categoria: ${event.event_category.category}</li>
+                            <li class="list-group-item">Precio: ${event.event.price}</li>
+                            <li class="list-group-item">Ubicacion: ${event.event.location}</li>
+                            <li class="list-group-item">Fecha: ${event.event.date}</li>
+                            <li class="list-group-item">Cupo: ${event.event.capacity}</li>
                         </ul>
                         <div class="d-grid gap-2">
                             <button type="button" class="btn btn-danger"  data-id="${event.event.id_event}"> Eliminar evento </button>
@@ -95,7 +95,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                <button type="button" class="btn btn-primary" id="logout">Si</button>
+                <button type="button" class="btn btn-success" id="logout">Si</button>
             </div>
         </div>
     </div>
